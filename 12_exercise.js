@@ -24,13 +24,13 @@ function filter(candidates, filters) {
     const AVAILABLE_IMMEDIATELY = 'AVAILABLE_IMMEDIATELY';
     const FRESH_GRAD = 'FRESH_GRAD';
     const suitableCandidates = [];
-    let candidateOptions;
+    let hasCandidateOptions;
 
     const availableImmediatelyFilter = filters.includes(AVAILABLE_IMMEDIATELY);
     const freshGradFilter = !availableImmediatelyFilter && filters.includes(FRESH_GRAD);
 
     for (var i = candidates.length; i--;) {
-        candidateOptions = candidates[i].options && candidates[i].options.length > 0; //has.options
+        hasCandidateOptions = candidates[i].options && candidates[i].options.length > 0; //has.options
 
         if (candidates[i].options) {
             for (var k = filters.length; k--;) {
@@ -47,10 +47,10 @@ function filter(candidates, filters) {
                         hasFilter = true;
                     }
                 }
-                candidateOptions = candidateOptions && hasFilter;
+                hasCandidateOptions = hasCandidateOptions && hasFilter;
             }
         }
-        if (candidateOptions) {
+        if (hasCandidateOptions) {
             suitableCandidates.unshift(candidates[i]);
         }
     }
