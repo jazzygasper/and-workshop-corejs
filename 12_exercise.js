@@ -18,10 +18,10 @@
 
 function filter(candidates, filters) {
 
-    function hasFilterz(){
+    function hasFilterz(candidate, k){
         let hasFilter = false;
-        
-        candidates[i].options.forEach((option) => {
+
+        candidate.options.forEach((option) => {
             if (!availableImmediatelyFilter && !freshGradFilter) {
                 if (filters[k].indexOf(option) !== -1) {
                     hasFilter = true;
@@ -48,21 +48,22 @@ function filter(candidates, filters) {
     const availableImmediatelyFilter = filters.includes(AVAILABLE_IMMEDIATELY);
     const freshGradFilter = !availableImmediatelyFilter && filters.includes(FRESH_GRAD);
 
-    for (var i = candidates.length; i--;) {
-        hasCandidateOptions = candidates[i].options && candidates[i].options.length > 0; //has.options
+//    for (var i = candidates.length; i--;) {
+        candidates.forEach((candidate) => {
+        hasCandidateOptions = candidate.options && candidate.options.length > 0; //has.options
 
-        if (candidates[i].options) {
+        if (candidate.options) {
             for (var k = filters.length; k--;) {
                 // loop through filters
-                var hasFilter = hasFilterz();
+                var hasFilter = hasFilterz(candidate, k);
 
                 hasCandidateOptions = hasCandidateOptions && hasFilter;
             }
         }
         if (hasCandidateOptions) {
-            suitableCandidates.unshift(candidates[i]);
+            suitableCandidates.push(candidate);
         }
-    }
+    });
 
     return suitableCandidates;
 
