@@ -1,5 +1,5 @@
-describe('About Higher Order Functions', function() {
-  it('should use filter to return array items that meet a criteria', function() {
+describe("About Higher Order Functions", function() {
+  it("should use filter to return array items that meet a criteria", function() {
     const numbers = [1, 2, 3];
     const odd = numbers.filter(function(x) {
       return x % 2 !== 0;
@@ -36,7 +36,7 @@ describe('About Higher Order Functions', function() {
 
   it("should use 'forEach' for simple iteration", function() {
     const numbers = [1, 2, 3];
-    const msg = '';
+    const msg = "";
     const isEven = function(item) {
       msg += item % 2 === 0;
     };
@@ -73,7 +73,7 @@ describe('About Higher Order Functions', function() {
     expect(mixedBag.xxx(isEven)).toBe(/* 🤔 */);
   });
 
-  it('use multiple higher order functions', function() {
+  it("use multiple higher order functions", function() {
     const result = [0, 1, 2]
       .map(function(x) {
         return x + 1;

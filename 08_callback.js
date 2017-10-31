@@ -13,13 +13,13 @@ roots = numbers.map(Math.sqrt);
 // roots is now [1, 2, 3]
 // numbers is still [1, 4, 9]
 
-const arr = ['a', 'b', 'c'];
+const arr = ["a", "b", "c"];
 
 arr.forEach(function(element) {
   console.log(element);
 });
 
-const readline = require('readline');
+const readline = require("readline");
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -42,31 +42,31 @@ const rl = readline.createInterface({
 
 //## ASYNCHRONOUS CALLBACK
 
-const http = require('http');
+const http = require("http");
 const httpOptions = {
-  hostname: 'jsonplaceholder.typicode.com',
+  hostname: "jsonplaceholder.typicode.com",
   port: 80,
-  path: '/comments'
+  path: "/comments"
 };
 
 http.get(httpOptions, function(res) {
-  let data = '';
-  res.on('data', function(chunk) {
+  let data = "";
+  res.on("data", function(chunk) {
     data += chunk;
   });
 
-  res.on('end', function() {
+  res.on("end", function() {
     //console.log(JSON.parse(data));
   });
 });
 
-const fs = require('fs');
-fs.readdir('..', function(err, files) {
+const fs = require("fs");
+fs.readdir("..", function(err, files) {
   console.log(files);
 });
 
-fs.readdir('..', listFiles);
+fs.readdir("..", listFiles);
 
 function listFiles(err, files) {
-  console.log('\nfiles from listFiles function', files);
+  console.log("\nfiles from listFiles function", files);
 }

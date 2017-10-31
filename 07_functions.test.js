@@ -1,6 +1,6 @@
 //## EXERCISE
-describe('About Functions', function() {
-  it('should declare functions', function() {
+describe("About Functions", function() {
+  it("should declare functions", function() {
     function add(a, b) {
       return a + b;
     }
@@ -8,15 +8,15 @@ describe('About Functions', function() {
     expect(add(1, 2)).toBe(/* 🤔 */);
   });
 
-  it('should know internal variables override outer variables', function() {
-    var message = 'Outer';
+  it("should know internal variables override outer variables", function() {
+    var message = "Outer";
 
     function getMessage() {
       return message;
     }
 
     function overrideMessage() {
-      var message = 'Inner';
+      var message = "Inner";
       return message;
     }
 
@@ -25,10 +25,10 @@ describe('About Functions', function() {
     expect(message).toBe(/* 🤔 */);
   });
 
-  it('should have lexical scoping', function() {
-    var variable = 'top-level';
+  it("should have lexical scoping", function() {
+    var variable = "top-level";
     function parentfunction() {
-      var variable = 'local';
+      var variable = "local";
       function childfunction() {
         return variable;
       }
@@ -37,7 +37,7 @@ describe('About Functions', function() {
     expect(parentfunction()).toBe(/* 🤔 */);
   });
 
-  it('should use lexical scoping to synthesise functions', function() {
+  it("should use lexical scoping to synthesise functions", function() {
     function makeMysteryFunction(makerValue) {
       var newFunction = function doMysteriousThing(param) {
         return makerValue + param;
@@ -51,53 +51,53 @@ describe('About Functions', function() {
     expect(mysteryFunction3(10) + mysteryFunction5(5)).toBe(/* 🤔 */);
   });
 
-  it('should allow extra function arguments', function() {
+  it("should allow extra function arguments", function() {
     function returnFirstArg(firstArg) {
       return firstArg;
     }
 
-    expect(returnFirstArg('first', 'second', 'third')).toBe(/* 🤔 */);
+    expect(returnFirstArg("first", "second", "third")).toBe(/* 🤔 */);
 
     function returnSecondArg(firstArg, secondArg) {
       return secondArg;
     }
 
-    expect(returnSecondArg('only give first arg')).toBe(/* 🤔 */);
+    expect(returnSecondArg("only give first arg")).toBe(/* 🤔 */);
 
     function returnAllArgs() {
       var argsArray = [];
       for (var i = 0; i < arguments.length; i += 1) {
         argsArray.push(arguments[i]);
       }
-      return argsArray.join(',');
+      return argsArray.join(",");
     }
 
-    expect(returnAllArgs('first', 'second', 'third')).toBe(/* 🤔 */);
+    expect(returnAllArgs("first", "second", "third")).toBe(/* 🤔 */);
   });
 
-  it('should pass functions as values', function() {
+  it("should pass functions as values", function() {
     var appendRules = function(name) {
-      return name + ' rules!';
+      return name + " rules!";
     };
 
     var appendDoubleRules = function(name) {
-      return name + ' totally rules!';
+      return name + " totally rules!";
     };
 
     var praiseSinger = { givePraise: appendRules };
-    expect(praiseSinger.givePraise('John')).toBe(/* 🤔 */);
+    expect(praiseSinger.givePraise("John")).toBe(/* 🤔 */);
 
     praiseSinger.givePraise = appendDoubleRules;
-    expect(praiseSinger.givePraise('Mary')).toBe(/* 🤔 */);
+    expect(praiseSinger.givePraise("Mary")).toBe(/* 🤔 */);
   });
 
-  it('should return a reversed string', () => {
+  it("should return a reversed string", () => {
     function reverse() {}
 
-    expect(reverse('hello')).toEqual('olleh');
+    expect(reverse("hello")).toEqual("olleh");
   });
 
-  it('should return a human age in dog age (1 1 human year to 7 dog years', () => {
+  it("should return a human age in dog age (1 1 human year to 7 dog years", () => {
     function puppyCalculator() {}
 
     expect(puppyCalculator(35)).toBe(5);
@@ -105,11 +105,11 @@ describe('About Functions', function() {
     expect(puppyCalculator(89)).toBe(12);
   });
 
-  it('should return a string with a defined suffix', () => {
+  it("should return a string with a defined suffix", () => {
     function addSuffix() {}
 
-    expect(markTaskDone('task1')).toEqual('task1 done!');
-    expect(markTaskDone('task2')).toEqual('task2 done!');
-    expect(hemphasis('do it').toEqual('do it!'));
+    expect(markTaskDone("task1")).toEqual("task1 done!");
+    expect(markTaskDone("task2")).toEqual("task2 done!");
+    expect(hemphasis("do it").toEqual("do it!"));
   });
 });

@@ -1,24 +1,24 @@
 //## OBJECT
 
 let myObj = {
-  key: 'value'
+  key: "value"
   // ...
 };
 
 myObj = new Object();
-myObj.key = 'value';
+myObj.key = "value";
 
 //## STRING
 
-let strPrimitive = 'I am a string';
+let strPrimitive = "I am a string";
 typeof strPrimitive; // "string"
 strPrimitive instanceof String; // false
 
 console.log(strPrimitive.length); // 13
 console.log(strPrimitive.charAt(3)); // "m"
-console.log(strPrimitive.includes('a')); // true
+console.log(strPrimitive.includes("a")); // true
 
-let strObject = new String('I am a string');
+let strObject = new String("I am a string");
 typeof strObject; // "object"
 strObject instanceof String; // true
 
@@ -67,7 +67,7 @@ myObject = {
 
 myObject.a; // 2
 
-myObject['a']; // 2
+myObject["a"]; // 2
 
 /*
 //## Property vs. Method
@@ -87,7 +87,7 @@ The safest conclusion is probably that "function" and "method" are interchangeab
 */
 
 function foo() {
-  console.log('foo');
+  console.log("foo");
 }
 
 var someFoo = foo; // variable reference to `foo`
@@ -108,7 +108,7 @@ function Person(name, lastname, age) {
   this.age = age;
 }
 
-const josh = new Person('josh', 'smith', 24);
+const josh = new Person("josh", "smith", 24);
 
 console.log(josh); // Person { name: 'josh', lastname: 'smith', age: 24 }
 console.log(josh.name); //josh
@@ -123,7 +123,7 @@ console.log(Person instanceof Function); // true
 
 var myObject = {};
 
-Object.defineProperty(myObject, 'a', {
+Object.defineProperty(myObject, "a", {
   value: 2,
   writable: true, //cannot change
   configurable: true, // can chenge this settings
@@ -136,14 +136,14 @@ myObject.a; // 2
 
 const baz = {
   x: 2,
-  y: 'ciao',
+  y: "ciao",
   //a function!
   log: function() {
-    console.log('baz');
+    console.log("baz");
   },
   // another object literal!
   bar: {
     x: 2,
-    z: 'brill'
+    z: "brill"
   }
 };

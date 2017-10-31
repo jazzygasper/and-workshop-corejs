@@ -3,7 +3,7 @@
 //foo1
 
 function foo1(num) {
-  console.log('foo1: ' + num);
+  console.log("foo1: " + num);
 
   // keep track of how many times `foo` is called
   this.count++;
@@ -42,7 +42,7 @@ const data = {
 };
 
 function foo2(num) {
-  console.log('foo2: ' + num);
+  console.log("foo2: " + num);
   console.log(data);
   // keep track of how many times `foo` is called
   data.count++;
@@ -63,7 +63,7 @@ console.log(`foo2 count ${data.count}\n`); // 4
 
 //foo3
 function foo3(num) {
-  console.log('foo3: ' + num);
+  console.log("foo3: " + num);
 
   // keep track of how many times `foo` is called
   foo3.count++;
@@ -86,7 +86,7 @@ console.log(`foo3 count ${foo3.count} \n`); // 4
 
 //foo4 EMBRACING THIS!
 function foo4(num) {
-  console.log('foo4: ' + num);
+  console.log("foo4: " + num);
 
   // keep track of how many times `foo` is called
   // Note: `this` IS actually `foo` now, based on
@@ -117,11 +117,11 @@ function Person(name) {
   this.name = name;
 }
 
-const george = new Person('George');
+const george = new Person("George");
 console.log(george.name);
 
 //another example
-console.log('Another example bar1, bar2 and bar3\n');
+console.log("Another example bar1, bar2 and bar3\n");
 //bar1
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call
 function bar1() {

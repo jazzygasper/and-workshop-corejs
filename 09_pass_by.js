@@ -7,13 +7,13 @@ This makes it look like pass by reference. But if you actually change the value 
 
 function changeStuff(num, obj1, obj2) {
   num = num * 10;
-  obj1.item = 'changed';
-  obj2 = { item: 'changed' };
+  obj1.item = "changed";
+  obj2 = { item: "changed" };
 }
 
 var num = 10;
-var obj1 = { item: 'unchanged' };
-var obj2 = { item: 'unchanged' };
+var obj1 = { item: "unchanged" };
+var obj2 = { item: "unchanged" };
 
 changeStuff(num, obj1, obj2);
 

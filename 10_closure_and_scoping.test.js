@@ -9,7 +9,7 @@
 
 */
 
-it('should console log a = 2', () => {
+it("should console log a = 2", () => {
   function test() {
     console.log(a);
     console.log(foo());
@@ -35,20 +35,20 @@ const getFunctions = result => {
   return funcs;
 };
 
-test('First function is 0', () => {
+test("First function is 0", () => {
   const funcs = getFunctions();
 
-  expect(funcs[0]()).toBe('I am index 0!');
+  expect(funcs[0]()).toBe("I am index 0!");
 });
 
-test('Second function is 1', () => {
+test("Second function is 1", () => {
   const funcs = getFunctions();
 
-  expect(funcs[1]()).toBe('I am index 1!');
+  expect(funcs[1]()).toBe("I am index 1!");
 });
 
-test('Third function is 2', () => {
+test("Third function is 2", () => {
   const funcs = getFunctions();
 
-  expect(funcs[2]()).toBe('I am index 2!');
+  expect(funcs[2]()).toBe("I am index 2!");
 });

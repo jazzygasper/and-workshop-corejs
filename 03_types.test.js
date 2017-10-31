@@ -1,6 +1,6 @@
-describe('About Arrays', function() {
+describe("About Arrays", function() {
   //We shall contemplate truth by testing reality, via spec expectations.
-  it('should create arrays', function() {
+  it("should create arrays", function() {
     const emptyArray = [];
     expect(typeof emptyArray).toBe(/* 🤔 */); //A mistake? - http://javascript.crockford.com/remedial.html
     expect(emptyArray.length).toBe(/* 🤔 */);
@@ -8,7 +8,7 @@ describe('About Arrays', function() {
     const multiTypeArray = [
       0,
       1,
-      'two',
+      "two",
       function() {
         return 3;
       },
@@ -19,11 +19,11 @@ describe('About Arrays', function() {
     expect(multiTypeArray[2]).toBe(/* 🤔 */);
     expect(multiTypeArray[3]()).toBe(/* 🤔 */);
     expect(multiTypeArray[4].value1).toBe(/* 🤔 */);
-    expect(multiTypeArray[4]['value2']).toBe(/* 🤔 */);
+    expect(multiTypeArray[4]["value2"]).toBe(/* 🤔 */);
     expect(multiTypeArray[5][0]).toBe(/* 🤔 */);
   });
 
-  it('should understand array literals', function() {
+  it("should understand array literals", function() {
     const array = [];
     expect(array).toEqual([]);
 
@@ -37,7 +37,7 @@ describe('About Arrays', function() {
     expect(array).toEqual(/* 🤔 */);
   });
 
-  it('should understand array length', function() {
+  it("should understand array length", function() {
     const fourNumberArray = [1, 2, 3, 4];
 
     expect(fourNumberArray.length).toBe(/* 🤔 */);
@@ -51,8 +51,8 @@ describe('About Arrays', function() {
     expect(tenEmptyElementArray.length).toBe(/* 🤔 */);
   });
 
-  it('should slice arrays', function() {
-    const array = ['peanut', 'butter', 'and', 'jelly'];
+  it("should slice arrays", function() {
+    const array = ["peanut", "butter", "and", "jelly"];
 
     expect(array.slice(0, 1)).toEqual(/* 🤔 */);
     expect(array.slice(0, 2)).toEqual(/* 🤔 */);
@@ -63,25 +63,25 @@ describe('About Arrays', function() {
     expect(array.slice(5, 1)).toEqual(/* 🤔 */);
   });
 
-  it('should know array references', function() {
-    const array = ['zero', 'one', 'two', 'three', 'four', 'five'];
+  it("should know array references", function() {
+    const array = ["zero", "one", "two", "three", "four", "five"];
 
     function passedByReference(refArray) {
-      refArray[1] = 'changed in function';
+      refArray[1] = "changed in function";
     }
     passedByReference(array);
     expect(array[1]).toBe(/* 🤔 */);
 
     const assignedArray = array;
-    assignedArray[5] = 'changed in assignedArray';
+    assignedArray[5] = "changed in assignedArray";
     expect(array[5]).toBe(/* 🤔 */);
 
     const copyOfArray = array.slice();
-    copyOfArray[3] = 'changed in copyOfArray';
+    copyOfArray[3] = "changed in copyOfArray";
     expect(array[3]).toBe(/* 🤔 */);
   });
 
-  it('should push and pop', function() {
+  it("should push and pop", function() {
     const array = [1, 2];
     array.push(3);
 
@@ -92,7 +92,7 @@ describe('About Arrays', function() {
     expect(array).toEqual(/* 🤔 */);
   });
 
-  it('should know about shifting arrays', function() {
+  it("should know about shifting arrays", function() {
     const array = [1, 2];
 
     array.unshift(3);

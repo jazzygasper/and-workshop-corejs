@@ -17,7 +17,7 @@ function baz() {
   // call-stack is: `baz`
   // so, our call-site is in the global scope
 
-  console.log('baz');
+  console.log("baz");
   bar(); // <-- call-site for `bar`
 }
 
@@ -25,7 +25,7 @@ function bar() {
   // call-stack is: `baz` -> `bar`
   // so, our call-site is in `baz`
 
-  console.log('bar');
+  console.log("bar");
   foo(); // <-- call-site for `foo`
 }
 
@@ -33,7 +33,7 @@ function foo() {
   // call-stack is: `baz` -> `bar` -> `foo`
   // so, our call-site is in `bar`
 
-  console.log('foo');
+  console.log("foo");
 }
 
 baz(); // <-- call-site for `baz`
@@ -77,7 +77,7 @@ const obj2 = {
 
 const ref = obj2.lolz3; // function reference/alias!
 
-var a = 'oops, global'; // `a` also property on global object
+var a = "oops, global"; // `a` also property on global object
 
 ref(); // "oops, global" in the browser - undefined
 
