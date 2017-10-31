@@ -16,55 +16,52 @@
  *   happy refactory :)
  */
 
-function filter(dataInput, filters) {
-  const AVAILABLE_IMMEDIATELY = 'AVAILABLE_IMMEDIATELY';
-  const FRESH_GRAD = 'FRESH_GRAD';
-  var outPutOfResults = [];
-  var dataInputLength = dataInput.length;
-  var filterLength = filters.length;
-  var candidateOptions;
-  var availableImmediately = false;
-  var freshGrad = false;
+function filter(candidates, filters) {
+    const AVAILABLE_IMMEDIATELY = 'AVAILABLE_IMMEDIATELY';
+    const FRESH_GRAD = 'FRESH_GRAD';
+    var outPutOfResults = [];
+    var candidatesLength = candidates.length;
+    var filterLength = filters.length;
+    var candidateOptions;
+    var availableImmediately = false;
+    var freshGrad = false;
 
-  if (filterLength !== 0) {
+    if (!filters.length) {
+        return candidates
+    }
     if (filters.indexOf(AVAILABLE_IMMEDIATELY) !== -1) {
-      availableImmediately = true;
+        availableImmediately = true;
     } else if (filters.indexOf(FRESH_GRAD) !== -1) {
-      freshGrad = true;
+        freshGrad = true;
     }
 
-    for (var i = dataInputLength; i--; ) {
-      candidateOptions = dataInput[i].options && dataInput[i].options.length > 0; //has.options
+    for (var i = candidatesLength; i--;) {
+        candidateOptions = candidates[i].options && candidates[i].options.length > 0; //has.options
 
-      if (dataInput[i].options) {
-        for (var k = filterLength; k--; ) {
-          // loop through filters
-          var hasFilter = false;
-          for (var j = dataInput[i].options.length; j--; ) {
-            if (!availableImmediately && !freshGrad) {
-              if (filters[k].indexOf(dataInput[i].options[j]) !== -1) {
-                hasFilter = true;
-              }
-            } else if (
-              availableImmediately &&
-              dataInput[i].options[j] === AVAILABLE_IMMEDIATELY
-            ) {
-              hasFilter = true;
-            } else if (freshGrad && dataInput[i].options[j] === FRESH_GRAD) {
-              hasFilter = true;
+        if (candidates[i].options) {
+            for (var k = filterLength; k--;) {
+                // loop through filters
+                var hasFilter = false;
+                for (var j = candidates[i].options.length; j--;) {
+                    if (!availableImmediately && !freshGrad) {
+                        if (filters[k].indexOf(candidates[i].options[j]) !== -1) {
+                            hasFilter = true;
+                        }
+                    } else if (availableImmediately && candidates[i].options[j] === AVAILABLE_IMMEDIATELY) {
+                        hasFilter = true;
+                    } else if (freshGrad && candidates[i].options[j] === FRESH_GRAD) {
+                        hasFilter = true;
+                    }
+                }
+                candidateOptions = candidateOptions && hasFilter;
             }
-          }
-          candidateOptions = candidateOptions && hasFilter;
         }
-      }
-      if (candidateOptions) {
-        outPutOfResults.unshift(dataInput[i]);
-      }
+        if (candidateOptions) {
+            outPutOfResults.unshift(candidates[i]);
+        }
     }
-  } else {
-    outPutOfResults = dataInput;
-  }
-  return outPutOfResults;
+
+    return outPutOfResults;
 }
 
 module.exports = filter;
