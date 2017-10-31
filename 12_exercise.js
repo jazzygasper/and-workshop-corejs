@@ -17,6 +17,25 @@
  */
 
 function filter(candidates, filters) {
+
+    function hasFilterz(){
+        let hasFilter = false;
+        
+        candidates[i].options.forEach((option) => {
+            if (!availableImmediatelyFilter && !freshGradFilter) {
+                if (filters[k].indexOf(option) !== -1) {
+                    hasFilter = true;
+                }
+            } else if (availableImmediatelyFilter && option === AVAILABLE_IMMEDIATELY) {
+                hasFilter = true;
+            } else if (freshGradFilter && option === FRESH_GRAD) {
+                hasFilter = true;
+            }
+        });
+
+        return hasFilter;
+    }
+
     if (!filters.length) {
         return candidates
     }
@@ -35,18 +54,8 @@ function filter(candidates, filters) {
         if (candidates[i].options) {
             for (var k = filters.length; k--;) {
                 // loop through filters
-                var hasFilter = false;
-                for (var j = candidates[i].options.length; j--;) {
-                    if (!availableImmediatelyFilter && !freshGradFilter) {
-                        if (filters[k].indexOf(candidates[i].options[j]) !== -1) {
-                            hasFilter = true;
-                        }
-                    } else if (availableImmediatelyFilter && candidates[i].options[j] === AVAILABLE_IMMEDIATELY) {
-                        hasFilter = true;
-                    } else if (freshGradFilter && candidates[i].options[j] === FRESH_GRAD) {
-                        hasFilter = true;
-                    }
-                }
+                var hasFilter = hasFilterz();
+
                 hasCandidateOptions = hasCandidateOptions && hasFilter;
             }
         }
@@ -56,6 +65,8 @@ function filter(candidates, filters) {
     }
 
     return suitableCandidates;
+
+
 }
 
 module.exports = filter;
