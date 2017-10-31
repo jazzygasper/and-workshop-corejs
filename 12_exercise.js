@@ -20,7 +20,6 @@ function filter(candidates, filters) {
 
     function checkFilter(candidate, filter) {
         let hasFilter = false;
-
         candidate.options.forEach(option => {
             if (filter.includes(option)) {
                 hasFilter = true;
@@ -42,7 +41,7 @@ function filter(candidates, filters) {
     const freshGradFilter = !availableImmediatelyFilter && filters.includes(FRESH_GRAD);
 
     candidates.forEach(candidate => {
-        hasCandidateOptions = candidate.options && candidate.options.length > 0; //has.options
+        hasCandidateOptions = candidate.options && candidate.options.length ; //has.options
 
         if (candidate.options) {
             if (availableImmediatelyFilter) {
@@ -59,7 +58,6 @@ function filter(candidates, filters) {
             suitableCandidates.push(candidate);
         }
     });
-
     return suitableCandidates;
 }
 
