@@ -1,7 +1,7 @@
 [
   {
     "name": "Julian Assange",
-    "options": ["AVAILABLE_IMMEDIATELY", "FRESH_GRAD", "JUNIOR", "JAVASCRIPT", "AWS", "REACT", "JAVA"]
+    "options": ["AVAILABLE_IMMEDIATELY", "FRESH_GRAD", "JUNIOR", "JAVASCRIPT", "AWS", "REACT"]
   },
   {
     "name": "Kelly Diamond",
@@ -13,7 +13,7 @@
   },
   {
     "name": "Donald Obama",
-    "options": ["SENIOR", "AWS", "JAVA"]
+    "options": ["SENIOR", "AWS", "JAVASCRIPT"]
   },
   {
     "name": "Maria Bianchi",

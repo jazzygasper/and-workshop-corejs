@@ -17,57 +17,50 @@
  */
 
 function filter(candidates, filters) {
-  function hasFilterz(candidate, filter) {
-    let hasFilter = false;
 
-    candidate.options.forEach(option => {
-      if (!availableImmediatelyFilter && !freshGradFilter) {
-        if (filter.indexOf(option) !== -1) {
-          hasFilter = true;
+    function checkFilter(candidate, filter) {
+        let hasFilter = false;
+
+        candidate.options.forEach(option => {
+            if (filter.includes(option)) {
+                hasFilter = true;
+            }
+        });
+        return hasFilter;
+    }
+
+    if (!filters.length) {
+        return candidates;
+    }
+
+    const AVAILABLE_IMMEDIATELY = "AVAILABLE_IMMEDIATELY";
+    const FRESH_GRAD = "FRESH_GRAD";
+    const suitableCandidates = [];
+    let hasCandidateOptions;
+
+    const availableImmediatelyFilter = filters.includes(AVAILABLE_IMMEDIATELY);
+    const freshGradFilter = !availableImmediatelyFilter && filters.includes(FRESH_GRAD);
+
+    candidates.forEach(candidate => {
+        hasCandidateOptions = candidate.options && candidate.options.length > 0; //has.options
+
+        if (candidate.options) {
+            if (availableImmediatelyFilter) {
+                hasCandidateOptions = candidate.options.includes(AVAILABLE_IMMEDIATELY);
+            } else if (freshGradFilter) {
+                hasCandidateOptions = candidate.options.includes(FRESH_GRAD);
+            } else {
+                filters.forEach(filter => {
+                    hasCandidateOptions = hasCandidateOptions && checkFilter(candidate, filter);;
+                });
+            }
         }
-      } else if (
-        availableImmediatelyFilter &&
-        option === AVAILABLE_IMMEDIATELY
-      ) {
-        hasFilter = true;
-      } else if (freshGradFilter && option === FRESH_GRAD) {
-        hasFilter = true;
-      }
+        if (hasCandidateOptions) {
+            suitableCandidates.push(candidate);
+        }
     });
 
-    return hasFilter;
-  }
-
-  if (!filters.length) {
-    return candidates;
-  }
-
-  const AVAILABLE_IMMEDIATELY = "AVAILABLE_IMMEDIATELY";
-  const FRESH_GRAD = "FRESH_GRAD";
-  const suitableCandidates = [];
-  let hasCandidateOptions;
-
-  const availableImmediatelyFilter = filters.includes(AVAILABLE_IMMEDIATELY);
-  const freshGradFilter =
-    !availableImmediatelyFilter && filters.includes(FRESH_GRAD);
-
-  candidates.forEach(candidate => {
-    hasCandidateOptions = candidate.options && candidate.options.length > 0; //has.options
-
-    if (candidate.options) {
-      filters.forEach(filter => {
-        // loop through filters
-        var hasFilter = hasFilterz(candidate, filter);
-
-        hasCandidateOptions = hasCandidateOptions && hasFilter;
-      });
-    }
-    if (hasCandidateOptions) {
-      suitableCandidates.push(candidate);
-    }
-  });
-
-  return suitableCandidates;
+    return suitableCandidates;
 }
 
 module.exports = filter;
