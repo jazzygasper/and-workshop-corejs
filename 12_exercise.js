@@ -17,6 +17,8 @@
  */
 
 function filter(dataInput, filters) {
+  const AVAILABLE_IMMEDIATELY = 'AVAILABLE_IMMEDIATELY';
+  const FRESH_GRAD = 'FRESH_GRAD';
   var outPutOfResults = [];
   var dataInputLength = dataInput.length;
   var filterLength = filters.length;
@@ -25,9 +27,9 @@ function filter(dataInput, filters) {
   var freshGrad = false;
 
   if (filterLength !== 0) {
-    if (filters.indexOf('AVAILABLE_IMMEDIATELY') !== -1) {
+    if (filters.indexOf(AVAILABLE_IMMEDIATELY) !== -1) {
       availableImmediately = true;
-    } else if (filters.indexOf('FRESH_GRAD') !== -1) {
+    } else if (filters.indexOf(FRESH_GRAD) !== -1) {
       freshGrad = true;
     }
 
@@ -45,10 +47,10 @@ function filter(dataInput, filters) {
               }
             } else if (
               availableImmediately &&
-              dataInput[i].options[j] === 'AVAILABLE_IMMEDIATELY'
+              dataInput[i].options[j] === AVAILABLE_IMMEDIATELY
             ) {
               hasFilter = true;
-            } else if (freshGrad && dataInput[i].options[j] === 'FRESH_GRAD') {
+            } else if (freshGrad && dataInput[i].options[j] === FRESH_GRAD) {
               hasFilter = true;
             }
           }
