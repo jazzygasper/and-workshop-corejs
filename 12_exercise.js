@@ -17,21 +17,17 @@
  */
 
 function filter(candidates, filters) {
-    const AVAILABLE_IMMEDIATELY = 'AVAILABLE_IMMEDIATELY';
-    const FRESH_GRAD = 'FRESH_GRAD';
-    var suitableCandidates = [];
-    var candidateOptions;
-    var availableImmediately = false;
-    var freshGrad = false;
-
     if (!filters.length) {
         return candidates
     }
-    if (filters.indexOf(AVAILABLE_IMMEDIATELY) !== -1) {
-        availableImmediately = true;
-    } else if (filters.indexOf(FRESH_GRAD) !== -1) {
-        freshGrad = true;
-    }
+
+    const AVAILABLE_IMMEDIATELY = 'AVAILABLE_IMMEDIATELY';
+    const FRESH_GRAD = 'FRESH_GRAD';
+    const suitableCandidates = [];
+    let candidateOptions;
+
+    const availableImmediatelyFilter = filters.includes(AVAILABLE_IMMEDIATELY);
+    const freshGradFilter = !availableImmediatelyFilter && filters.includes(FRESH_GRAD);
 
     for (var i = candidates.length; i--;) {
         candidateOptions = candidates[i].options && candidates[i].options.length > 0; //has.options
@@ -41,13 +37,13 @@ function filter(candidates, filters) {
                 // loop through filters
                 var hasFilter = false;
                 for (var j = candidates[i].options.length; j--;) {
-                    if (!availableImmediately && !freshGrad) {
+                    if (!availableImmediatelyFilter && !freshGradFilter) {
                         if (filters[k].indexOf(candidates[i].options[j]) !== -1) {
                             hasFilter = true;
                         }
-                    } else if (availableImmediately && candidates[i].options[j] === AVAILABLE_IMMEDIATELY) {
+                    } else if (availableImmediatelyFilter && candidates[i].options[j] === AVAILABLE_IMMEDIATELY) {
                         hasFilter = true;
-                    } else if (freshGrad && candidates[i].options[j] === FRESH_GRAD) {
+                    } else if (freshGradFilter && candidates[i].options[j] === FRESH_GRAD) {
                         hasFilter = true;
                     }
                 }
